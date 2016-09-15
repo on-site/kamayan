@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    attestify (0.1.0.pre.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  attestify
+
+BUNDLED WITH
+   1.12.5
