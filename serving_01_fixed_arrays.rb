@@ -13,9 +13,9 @@ require_relative "kamayan"
 # The FixedArray class represents the raw array you would find in languages like
 # Java. It is implemented in fixed_array.rb. These tests are to help familiarize
 # you with the concept. Take a look at how it is implemented once you have
-# finished this dish of the Kamayan. You will be using it in further dishes to
-# implement other familiar data sets.
-class AboutFixedArrays < Attestify::Test
+# finished this serving of the Kamayan. You will be using it in further servings
+# to implement other familiar data sets.
+class Serving01FixedArrays < Attestify::Test
   def test_a_fixed_array_has_a_size_specified_when_it_is_created
     assert_equal __, FixedArray.new(0).size
     assert_equal __, FixedArray.new(1).size
