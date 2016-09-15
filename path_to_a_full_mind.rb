@@ -1,5 +1,5 @@
 require_relative "serving_01_fixed_arrays"
-#require_relative "serving_02_array_lists"
+require_relative "serving_02_array_lists"
 #require_relative "serving_03_linked_lists"
 #require_relative "serving_04_stacks"
 #require_relative "serving_05_queues"
