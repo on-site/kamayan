@@ -63,6 +63,20 @@ class Serving03LinkedLists < Attestify::Test
     assert_equal 4, linked_list.size
   end
 
+  def test_shovel_can_be_called_a_lot
+    linked_list = LinkedList.new
+    100.times { linked_list << 42 }
+    assert_equal 100, linked_list.size
+    assert (0..99).all? { |i| linked_list[i] == 42 }
+  end
+
+  def test_reverse_shovel_can_be_called_a_lot
+    linked_list = LinkedList.new
+    100.times { linked_list >> 42 }
+    assert_equal 100, linked_list.size
+    assert (0..99).all? { |i| linked_list[i] == 42 }
+  end
+
   def test_index_get_cannot_go_outside_the_bounds_of_the_array
     linked_list = LinkedList.new
     assert_raises(IndexError) { linked_list[-1] }
@@ -87,7 +101,7 @@ class Serving03LinkedLists < Attestify::Test
     linked_list[1] = 2
     linked_list[2] = 3
     linked_list[3] = 4
-    assert (0..3).all? { |i| assert_equal i + 1, linked_list[i] }
+    assert (0..3).all? { |i| i + 1 == linked_list[i] }
   end
 
   def test_index_set_can_use_existing_indexes
@@ -96,7 +110,7 @@ class Serving03LinkedLists < Attestify::Test
     linked_list[1] = 2
     linked_list[2] = 3
     linked_list[3] = 4
-    assert (0..3).all? { |i| assert_equal i + 1, linked_list[i] }
+    assert (0..3).all? { |i| i + 1 == linked_list[i] }
   end
 
   def test_index_set_can_use_distant_indexes
@@ -104,9 +118,9 @@ class Serving03LinkedLists < Attestify::Test
     linked_list[42] = 1
     linked_list[142] = 2
     linked_list[1042] = 3
-    assert (0..41).all? { |i| assert_nil linked_list[i] }
-    assert (43..141).all? { |i| assert_nil linked_list[i] }
-    assert (143..1041).all? { |i| assert_nil linked_list[i] }
+    assert (0..41).all? { |i| linked_list[i].nil? }
+    assert (43..141).all? { |i| linked_list[i].nil? }
+    assert (143..1041).all? { |i| linked_list[i].nil? }
     assert_equal 1, linked_list[42]
     assert_equal 2, linked_list[142]
     assert_equal 3, linked_list[1042]
@@ -175,6 +189,13 @@ class Serving03LinkedLists < Attestify::Test
     linked_list.delete(0)
     assert_equal 1, linked_list.size
     linked_list.delete(0)
+    assert_equal 0, linked_list.size
+  end
+
+  def test_delete_can_be_called_a_lot
+    linked_list = LinkedList.new
+    100.times { linked_list << 42 }
+    100.times { linked_list.delete(0) }
     assert_equal 0, linked_list.size
   end
 end

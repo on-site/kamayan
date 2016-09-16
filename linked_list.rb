@@ -64,11 +64,11 @@ class LinkedList
   end
 
   class Node
-    attr_accessor :value, :next_node
+    attr_accessor :value, :child
 
-    def initialize(value, next_node = nil)
+    def initialize(value, child = nil)
       @value = value
-      @next_node = next_node
+      @child = child
     end
   end
 end

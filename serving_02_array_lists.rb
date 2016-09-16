@@ -57,6 +57,20 @@ class Serving02ArrayLists < Attestify::Test
     assert_equal 4, array_list.size
   end
 
+  def test_shovel_can_be_called_a_lot
+    array_list = ArrayList.new
+    100.times { array_list << 42 }
+    assert_equal 100, array_list.size
+    assert (0..99).all? { |i| array_list[i] == 42 }
+  end
+
+  def test_reverse_shovel_can_be_called_a_lot
+    array_list = ArrayList.new
+    100.times { array_list >> 42 }
+    assert_equal 100, array_list.size
+    assert (0..99).all? { |i| array_list[i] == 42 }
+  end
+
   def test_index_get_cannot_go_outside_the_bounds_of_the_array
     array_list = ArrayList.new
     assert_raises(IndexError) { array_list[-1] }
@@ -81,7 +95,7 @@ class Serving02ArrayLists < Attestify::Test
     array_list[1] = 2
     array_list[2] = 3
     array_list[3] = 4
-    assert (0..3).all? { |i| assert_equal i + 1, array_list[i] }
+    assert (0..3).all? { |i| i + 1 == array_list[i] }
   end
 
   def test_index_set_can_use_existing_indexes
@@ -90,7 +104,7 @@ class Serving02ArrayLists < Attestify::Test
     array_list[1] = 2
     array_list[2] = 3
     array_list[3] = 4
-    assert (0..3).all? { |i| assert_equal i + 1, array_list[i] }
+    assert (0..3).all? { |i| i + 1 == array_list[i] }
   end
 
   def test_index_set_can_use_distant_indexes
@@ -98,9 +112,9 @@ class Serving02ArrayLists < Attestify::Test
     array_list[42] = 1
     array_list[142] = 2
     array_list[1042] = 3
-    assert (0..41).all? { |i| assert_nil array_list[i] }
-    assert (43..141).all? { |i| assert_nil array_list[i] }
-    assert (143..1041).all? { |i| assert_nil array_list[i] }
+    assert (0..41).all? { |i| array_list[i].nil? }
+    assert (43..141).all? { |i| array_list[i].nil? }
+    assert (143..1041).all? { |i| array_list[i].nil? }
     assert_equal 1, array_list[42]
     assert_equal 2, array_list[142]
     assert_equal 3, array_list[1042]
@@ -169,6 +183,13 @@ class Serving02ArrayLists < Attestify::Test
     array_list.delete(0)
     assert_equal 1, array_list.size
     array_list.delete(0)
+    assert_equal 0, array_list.size
+  end
+
+  def test_delete_can_be_called_a_lot
+    array_list = ArrayList.new
+    100.times { array_list << 42 }
+    100.times { array_list.delete(0) }
     assert_equal 0, array_list.size
   end
 end
