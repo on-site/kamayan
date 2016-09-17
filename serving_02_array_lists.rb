@@ -10,6 +10,30 @@ require_relative "kamayan"
 #
 # Further instructions can be found inside the ArrayList class.
 class Serving02ArrayLists < Attestify::Test
+  # These are the methods you will implement.
+
+  def test_shovel_exists
+    assert_respond_to ArrayList.new, :<<
+    assert_equal 1, ArrayList.new.method(:<<).arity
+  end
+
+  def test_reverse_shovel_exists
+    assert_respond_to ArrayList.new, :>>
+    assert_equal 1, ArrayList.new.method(:>>).arity
+  end
+
+  def test_delete_exists
+    assert_respond_to ArrayList.new, :delete
+    assert_equal 1, ArrayList.new.method(:delete).arity
+  end
+
+  def test_index_set_exists
+    assert_respond_to ArrayList.new, :[]=
+    assert_equal 2, ArrayList.new.method(:[]=).arity
+  end
+
+  # This is the behavior for the methods you will implement.
+
   def test_shovel_adds_to_the_end
     array_list = ArrayList.new
     array_list << 42

@@ -16,6 +16,35 @@ require_relative "kamayan"
 # differences between the ArrayList and the LinkedList, and when you might use
 # one versus the other... the pros and cons of the two.
 class Serving03LinkedLists < Attestify::Test
+  # These are the methods you will implement.
+
+  def test_reverse_shovel_exists
+    assert_respond_to LinkedList.new, :>>
+    assert_equal 1, LinkedList.new.method(:>>).arity
+  end
+
+  def test_shovel_exists
+    assert_respond_to LinkedList.new, :<<
+    assert_equal 1, LinkedList.new.method(:<<).arity
+  end
+
+  def test_delete_exists
+    assert_respond_to LinkedList.new, :delete
+    assert_equal 1, LinkedList.new.method(:delete).arity
+  end
+
+  def test_index_get_exists
+    assert_respond_to LinkedList.new, :[]
+    assert_equal 1, LinkedList.new.method(:[]).arity
+  end
+
+  def test_index_set_exists
+    assert_respond_to LinkedList.new, :[]=
+    assert_equal 2, LinkedList.new.method(:[]=).arity
+  end
+
+  # This is the behavior for the methods you will implement.
+
   def test_shovel_adds_to_the_end
     linked_list = LinkedList.new
     linked_list << 42
@@ -77,7 +106,7 @@ class Serving03LinkedLists < Attestify::Test
     assert (0..99).all? { |i| linked_list[i] == 42 }
   end
 
-  def test_index_get_cannot_go_outside_the_bounds_of_the_array
+  def test_index_get_cannot_go_outside_the_bounds_of_the_list
     linked_list = LinkedList.new
     assert_raises(IndexError) { linked_list[-1] }
     assert_raises(IndexError) { linked_list[-42] }
