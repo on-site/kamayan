@@ -19,28 +19,23 @@ class Serving03LinkedLists < Attestify::Test
   # These are the methods you will implement.
 
   def test_reverse_shovel_exists
-    assert_respond_to LinkedList.new, :>>
-    assert_equal 1, LinkedList.new.method(:>>).arity
+    assert_method_exists LinkedList, :>>, 1
   end
 
   def test_shovel_exists
-    assert_respond_to LinkedList.new, :<<
-    assert_equal 1, LinkedList.new.method(:<<).arity
+    assert_method_exists LinkedList, :<<, 1
   end
 
   def test_delete_exists
-    assert_respond_to LinkedList.new, :delete
-    assert_equal 1, LinkedList.new.method(:delete).arity
+    assert_method_exists LinkedList, :delete, 1
   end
 
   def test_index_get_exists
-    assert_respond_to LinkedList.new, :[]
-    assert_equal 1, LinkedList.new.method(:[]).arity
+    assert_method_exists LinkedList, :[], 1
   end
 
   def test_index_set_exists
-    assert_respond_to LinkedList.new, :[]=
-    assert_equal 2, LinkedList.new.method(:[]=).arity
+    assert_method_exists LinkedList, :[]=, 2
   end
 
   # This is the behavior for the methods you will implement.

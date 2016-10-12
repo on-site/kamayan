@@ -7,7 +7,7 @@ require_relative "kamayan"
 # it has been created.
 #
 # The Ruby Array is much more like the Java ArrayList. The size of an ArrayList
-# is maleable just like a Ruby Array; items can be added and removed at any
+# is malleable just like a Ruby Array; items can be added and removed at any
 # time.
 #
 # The FixedArray class represents the raw array you would find in languages like

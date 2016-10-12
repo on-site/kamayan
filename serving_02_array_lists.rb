@@ -13,23 +13,19 @@ class Serving02ArrayLists < Attestify::Test
   # These are the methods you will implement.
 
   def test_shovel_exists
-    assert_respond_to ArrayList.new, :<<
-    assert_equal 1, ArrayList.new.method(:<<).arity
+    assert_method_exists ArrayList, :<<, 1
   end
 
   def test_reverse_shovel_exists
-    assert_respond_to ArrayList.new, :>>
-    assert_equal 1, ArrayList.new.method(:>>).arity
+    assert_method_exists ArrayList, :>>, 1
   end
 
   def test_delete_exists
-    assert_respond_to ArrayList.new, :delete
-    assert_equal 1, ArrayList.new.method(:delete).arity
+    assert_method_exists ArrayList, :delete, 1
   end
 
   def test_index_set_exists
-    assert_respond_to ArrayList.new, :[]=
-    assert_equal 2, ArrayList.new.method(:[]=).arity
+    assert_method_exists ArrayList, :[]=, 2
   end
 
   # This is the behavior for the methods you will implement.
