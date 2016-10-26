@@ -212,4 +212,12 @@ class Serving02ArrayLists < Attestify::Test
     100.times { array_list.delete(0) }
     assert_equal 0, array_list.size
   end
+
+  def test_delete_edge_case
+    array_list = ArrayList.new
+    array_list.instance_variable_get(:@array).size.times { array_list << 42 }
+    assert_equal 42, array_list.delete(5)
+    assert_equal 9, array_list.size
+    assert_nil array_list.instance_variable_get(:@array)[9]
+  end
 end
