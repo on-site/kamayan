@@ -1,4 +1,4 @@
-require_relative "kamayan"
+require_relative "../kamayan"
 
 # In Ruby, the Array class represents a collection of items. However, an Array
 # in Ruby is not like the arrays in other languages. Typically, an array in

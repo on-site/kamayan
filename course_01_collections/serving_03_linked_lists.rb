@@ -1,4 +1,4 @@
-require_relative "kamayan"
+require_relative "../kamayan"
 
 # This serving is similar to the last, except instead of implementing an Array
 # class in terms of FixedArray, you will be implementing it in terms of a series

@@ -1,4 +1,4 @@
-require_relative "kamayan"
+require_relative "../kamayan"
 
 # For this serving, you will be implementing your own version of the Array
 # class. You can find a stub of the class in array_list.rb, while the tests here
