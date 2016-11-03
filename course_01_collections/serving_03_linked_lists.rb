@@ -27,6 +27,7 @@ class Serving03LinkedLists < Attestify::Test
     linked_list >> 43
     assert_equal 43, linked_list.instance_variable_get(:@head).value
     assert_equal 42, linked_list.instance_variable_get(:@head).child.value
+    assert_nil linked_list.instance_variable_get(:@head).child.child
   end
 
   def test_reverse_shovel_increases_the_size
@@ -42,6 +43,7 @@ class Serving03LinkedLists < Attestify::Test
     linked_list >> 42 >> 43
     assert_equal 43, linked_list.instance_variable_get(:@head).value
     assert_equal 42, linked_list.instance_variable_get(:@head).child.value
+    assert_nil linked_list.instance_variable_get(:@head).child.child
   end
 
   def test_reverse_shovel_can_be_called_a_lot
@@ -67,6 +69,7 @@ class Serving03LinkedLists < Attestify::Test
     linked_list << 43
     assert_equal 42, linked_list.instance_variable_get(:@head).value
     assert_equal 43, linked_list.instance_variable_get(:@head).child.value
+    assert_nil linked_list.instance_variable_get(:@head).child.child
   end
 
   def test_shovel_increases_the_size
@@ -82,6 +85,7 @@ class Serving03LinkedLists < Attestify::Test
     linked_list << 42 << 43
     assert_equal 42, linked_list.instance_variable_get(:@head).value
     assert_equal 43, linked_list.instance_variable_get(:@head).child.value
+    assert_nil linked_list.instance_variable_get(:@head).child.child
   end
 
   def test_shovel_can_be_called_a_lot
@@ -103,6 +107,7 @@ class Serving03LinkedLists < Attestify::Test
     assert_equal 2, linked_list.instance_variable_get(:@head).child.value
     assert_equal 42, linked_list.instance_variable_get(:@head).child.child.value
     assert_equal 43, linked_list.instance_variable_get(:@head).child.child.child.value
+    assert_nil linked_list.instance_variable_get(:@head).child.child.child.child
   end
 
   def test_chained_shovel_and_reverse_shovel_increases_the_size

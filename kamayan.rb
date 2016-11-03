@@ -6,5 +6,6 @@ require_relative "lib/blanks"
 Attestify.autorun
 
 require_relative "array_list"
+require_relative "doubly_linked_list"
 require_relative "fixed_array"
 require_relative "linked_list"

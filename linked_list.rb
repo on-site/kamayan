@@ -8,8 +8,8 @@ class LinkedList
 
   # Use this nested class for storing the values of the LinkedList. Each
   # LinkedList::Node contains the value at its index, and a link to the
-  # LinkedList::Node at the next index (caled the "child" here). If the child is
-  # nil, that denotes the last element of the LinkedList.
+  # LinkedList::Node at the next index (called the "child" here). If the child
+  # is nil, that denotes the last element of the LinkedList.
   class Node
     attr_accessor :value, :child
 
