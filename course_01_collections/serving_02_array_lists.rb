@@ -10,25 +10,9 @@ require_relative "../kamayan"
 #
 # Further instructions can be found inside the ArrayList class.
 class Serving02ArrayLists < Attestify::Test
-  # These are the methods you will implement.
-
   def test_shovel_exists
     assert_method_exists ArrayList, :<<, 1
   end
-
-  def test_reverse_shovel_exists
-    assert_method_exists ArrayList, :>>, 1
-  end
-
-  def test_delete_exists
-    assert_method_exists ArrayList, :delete, 1
-  end
-
-  def test_index_set_exists
-    assert_method_exists ArrayList, :[]=, 2
-  end
-
-  # This is the behavior for the methods you will implement.
 
   def test_shovel_increases_the_size
     array_list = ArrayList.new
@@ -51,6 +35,10 @@ class Serving02ArrayLists < Attestify::Test
     array_list << 42 << 43
     assert_equal 42, array_list[0]
     assert_equal 43, array_list[1]
+  end
+
+  def test_reverse_shovel_exists
+    assert_method_exists ArrayList, :>>, 1
   end
 
   def test_reverse_shovel_increases_the_size
@@ -124,6 +112,10 @@ class Serving02ArrayLists < Attestify::Test
     assert_equal 43, array_list[3]
   end
 
+  def test_index_set_exists
+    assert_method_exists ArrayList, :[]=, 2
+  end
+
   def test_index_set_cannot_use_negative_number
     array_list = ArrayList.new
     assert_raises(IndexError) { array_list[-1] = 1 }
@@ -194,6 +186,10 @@ class Serving02ArrayLists < Attestify::Test
     assert_equal 143, array_list.size
     array_list[1042] = 3
     assert_equal 1043, array_list.size
+  end
+
+  def test_delete_exists
+    assert_method_exists ArrayList, :delete, 1
   end
 
   def test_delete_cannot_delete_outside_the_bounds_of_the_array_list
