@@ -166,7 +166,7 @@ class Serving03LinkedLists < Attestify::Test
     assert_equal 4, linked_list.size
   end
 
-  def test_index_set_can_add_element_to_the_end_of_the_list
+  def test_index_set_can_add_elements_to_the_end_of_the_list
     linked_list = LinkedList.new
     linked_list[0] = 1
     linked_list[1] = 2
