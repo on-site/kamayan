@@ -15,6 +15,18 @@ require_relative "../kamayan"
 # Once you have finished implementing the LinkedList, contemplate the
 # differences between the ArrayList and the LinkedList, and when you might use
 # one versus the other... the pros and cons of the two.
+#
+# Diagram of a linked list:
+#
+#   @size = 3
+#
+#   @head
+#     |
+#     v
+#   +---+              +---+      +---+
+#   | a | -- child --> | b | ---> | c | ---> nil
+#   +---+              +---+      +---+
+#
 class Serving03LinkedLists < Attestify::Test
   def test_reverse_shovel_exists
     assert_method_exists LinkedList, :>>, 1

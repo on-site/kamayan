@@ -9,6 +9,27 @@ require_relative "../kamayan"
 # new methods private.
 #
 # Further instructions can be found inside the ArrayList class.
+#
+# Diagram of an array list as it grows:
+#
+#   @size = 3
+#
+#   +---+---+---+---+---+---+---+---+---+---+
+#   | a | b | c |   |   |   |   |   |   |   |
+#   +---+---+---+---+---+---+---+---+---+---+
+#
+#   @size = 9
+#
+#   +---+---+---+---+---+---+---+---+---+---+
+#   | a | b | c | d | e | f | g | h | i |   |
+#   +---+---+---+---+---+---+---+---+---+---+
+#
+#   @size = 12
+#
+#   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+#   | a | b | c | d | e | f | g | h | i | j | k | l |   |   |   |   |   |   |   |   |
+#   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+#
 class Serving02ArrayLists < Attestify::Test
   def test_shovel_exists
     assert_method_exists ArrayList, :<<, 1

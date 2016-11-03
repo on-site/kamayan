@@ -8,6 +8,18 @@ require_relative "../kamayan"
 # Feel free to copy any code you wrote for the LinkedList into the
 # DoublyLinkedList, though you might need to add to the behavior. You will find
 # the stub class in doubly_linked_list.rb along with further instructions.
+#
+# Diagram of a doubly linked list:
+#
+#            @size = 3
+#
+#            @head                         @tail
+#              |                             |
+#              v                             v
+#            +---+ -- child --> +---+ ---> +---+ ---> nil
+#            | a |              | b |      | c |
+#   nil <--- +---+ <-- prev --- +---+ <--- +---+
+#
 class Serving04DoublyLinkedLists < Attestify::Test
   def test_reverse_shovel_exists
     assert_method_exists DoublyLinkedList, :>>, 1
