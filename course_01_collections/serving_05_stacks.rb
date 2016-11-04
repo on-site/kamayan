@@ -102,16 +102,14 @@ class Serving05Stacks < Attestify::Test
   end
 
   def test_pop_returns_the_last_element_of_the_stack
-    stack = Stack.new
-    stack.push(42)
+    stack = Stack.new.push(42)
     assert_equal 42, stack.pop
     stack.push(43)
     assert_equal 43, stack.pop
   end
 
   def test_pop_alters_the_size_of_the_stack
-    stack = Stack.new
-    stack.push(42).push(43)
+    stack = Stack.new.push(42).push(43)
     assert_equal 2, stack.size
     stack.pop
     assert_equal 1, stack.size
@@ -120,13 +118,13 @@ class Serving05Stacks < Attestify::Test
   end
 
   def test_pop_raises_an_error_if_the_stack_is_empty_after_being_emptied
-    stack.push(42)
+    stack = Stack.new.push(42)
     stack.pop
     assert_raises(IndexError) { stack.pop }
   end
 
   def test_pop_returns_the_last_element_added
-    stack.push(42).push(43).push(1).push(2)
+    stack = Stack.new.push(42).push(43).push(1).push(2)
     assert_equal 2, stack.pop
     assert_equal 1, stack.pop
     assert_equal 43, stack.pop
@@ -146,24 +144,20 @@ class Serving05Stacks < Attestify::Test
   end
 
   def test_empty_returns_true_for_stacks_that_have_been_emptied
-    stack = Stack.new
-    stack.push(42)
+    stack = Stack.new.push(42)
     stack.pop
     assert stack.empty?
   end
 
   def test_empty_returns_false_for_non_empty_stacks
-    stack = Stack.new
-    stack.push(42)
+    stack = Stack.new.push(42)
     refute stack.empty?
     stack.push(43)
     refute stack.empty?
   end
 
   def test_empty_returns_false_for_stacks_that_have_been_emptied_and_grown_again
-    stack = Stack.new
-    stack.push(42)
-    stack.push(43)
+    stack = Stack.new.push(42).push(43)
     stack.pop
     stack.pop
     stack.push(1)
@@ -183,16 +177,14 @@ class Serving05Stacks < Attestify::Test
   end
 
   def test_peek_returns_the_top_value_of_the_stack
-    stack = Stack.new
-    stack.push(42)
+    stack = Stack.new.push(42)
     assert_equal 42, stack.peek
     stack.push(43)
     assert_equal 43, stack.peek
   end
 
   def test_peek_can_by_called_multiple_times_with_affecting_the_size
-    stack = Stack.new
-    stack.push(42)
+    stack = Stack.new.push(42)
     assert_equal 42, stack.peek
     assert_equal 42, stack.peek
     assert_equal 42, stack.peek
