@@ -46,6 +46,14 @@ class DoublyLinkedList
   # delete the last item in the list and return the value of that item. The size
   # must be reduced by 1. An IndexError should be raised if the list is empty.
 
+  # Define an "each" method which takes no arguments but accepts a block. The
+  # block is yielded to with each element in the list, in order. The return
+  # value must be self.
+
+  # Define an "each_reversed" method which takes no arguments but accepts a
+  # block. The block is yielded to with each element in the list, in reverse
+  # order. The return value must be self.
+
   private
 
   def check_bounds(index)

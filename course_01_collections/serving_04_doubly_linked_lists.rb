@@ -320,4 +320,54 @@ class Serving04DoublyLinkedLists < Attestify::Test
     linked_list.delete_last
     assert_nil linked_list.instance_variable_get(:@tail)
   end
+
+  def test_each_exists
+    assert_method_exists DoublyLinkedList, :each, 0
+  end
+
+  def test_each_yields_to_nothing_when_the_list_is_empty
+    DoublyLinkedList.new.each do |element|
+      flunk "Expected no yield!"
+    end
+  end
+
+  def test_each_yields_to_the_elements_in_order
+    linked_list = DoublyLinkedList.new << 1 << 2 << 42 << 43
+    actual_elements = []
+    linked_list.each { |element| actual_elements << element }
+    assert_equal [1, 2, 42, 43], actual_elements
+  end
+
+  def test_each_returns_self_so_it_can_be_chained
+    linked_list = DoublyLinkedList.new
+    assert_equal(linked_list, linked_list.each { |_| })
+
+    linked_list << 1 << 2 << 42 << 43
+    assert_equal(linked_list, linked_list.each { |_| })
+  end
+
+  def test_each_reversed_exists
+    assert_method_exists DoublyLinkedList, :each_reversed, 0
+  end
+
+  def test_each_reversed_yields_to_nothing_when_the_list_is_empty
+    DoublyLinkedList.new.each_reversed do |element|
+      flunk "Expected no yield!"
+    end
+  end
+
+  def test_each_reversed_yields_to_the_elements_in_reverse_order
+    linked_list = DoublyLinkedList.new << 1 << 2 << 42 << 43
+    actual_elements = []
+    linked_list.each_reversed { |element| actual_elements << element }
+    assert_equal [43, 42, 2, 1], actual_elements
+  end
+
+  def test_each_reversed_returns_self_so_it_can_be_chained
+    linked_list = DoublyLinkedList.new
+    assert_equal(linked_list, linked_list.each_reversed { |_| })
+
+    linked_list << 1 << 2 << 42 << 43
+    assert_equal(linked_list, linked_list.each_reversed { |_| })
+  end
 end
