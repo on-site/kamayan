@@ -14,11 +14,20 @@ class Stack
     @list.size
   end
 
-  # push
+  # Define a method "push" which takes a single argument. This method should add
+  # the argument to the end of the stack, which should increase the size by
+  # 1. The return value must be self. If the max_size was specified when
+  # constructing the Stack (that is, it is not null), then a StackOverflowError
+  # should be raised before adding the value if the stack is already at the
+  # capacity.
 
-  # pop
+  # Define a method "pop" which takes no arguments. This method should remove
+  # and return the last value in the stack. An IndexError should be raised if
+  # the Stack is empty.
 
-  # empty?
+  # Define a method "empty?" which takes no arguments. This method should return
+  # whether or not the size is 0.
 
-  # peek
+  # Define a method "peek" which takes no arguments. This method should return
+  # the last value in the stack, without removing any elements in the stack.
 end
