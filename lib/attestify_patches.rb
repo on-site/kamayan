@@ -20,6 +20,7 @@ class Attestify::Reporter
     puts
     puts_failure_rerun(@failures.first) if @failures.first
     puts_additional_failures_notification
+    puts_failure_line_details
   end
 
   def puts_additional_failures_notification
@@ -28,6 +29,20 @@ class Attestify::Reporter
     puts "#{@failures.size - 1} additional tests failed or threw an exception!\n" \
          "Run again with '-- --all-failures' added to the end to see all failures."
   end
+
+  def puts_failure_line_details
+    return if @failures.empty?
+    puts
+    puts "The failures above failed on the following lines of the test:"
+
+    @failures.first.assertions.failure_details.each do |failure_detail|
+      puts_failure_line_details_for(failure_detail)
+    end
+  end
+
+  def puts_failure_line_details_for(failure_detail)
+    puts failure_detail.backtrace_locations.last
+  end
 end
 
 class Attestify::ColorReporter
@@ -35,6 +50,19 @@ class Attestify::ColorReporter
 
   def puts_additional_failures_notification
     return unless @failures.size > 1
+    print color_code(:bold_red)
+    super
+    print color_code(:reset)
+  end
+
+  def puts_failure_line_details
+    return if @failures.empty?
+    print color_code(:red)
+    super
+    print color_code(:reset)
+  end
+
+  def puts_failure_line_details_for(detail)
     print color_code(:bold_red)
     super
     print color_code(:reset)
