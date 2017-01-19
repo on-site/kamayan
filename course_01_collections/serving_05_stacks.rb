@@ -1,5 +1,19 @@
 require_relative "../kamayan"
 
+# Diagram of a stack:
+#
+#  New elements are added here
+#    |
+#    +-->
+#         +---+
+#         | z | <--- Elements are removed from here
+#         +---+
+#         | y |
+#         +---+
+#         | x |
+#         +---+
+#
+#
 # Diagram of a stack as you run operations on it:
 #
 #   Empty    push(a)  push(b)  push(c)
@@ -183,7 +197,7 @@ class Serving05Stacks < Attestify::Test
     assert_equal 43, stack.peek
   end
 
-  def test_peek_can_by_called_multiple_times_with_affecting_the_size
+  def test_peek_can_be_called_multiple_times_without_affecting_the_size
     stack = Stack.new.push(42)
     assert_equal 42, stack.peek
     assert_equal 42, stack.peek
