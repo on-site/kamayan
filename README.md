@@ -1,4 +1,4 @@
-# Ruby Kamayan
+# Kamayan
 
 A Kamayan is a Filipino communal gathering where family, friends, and close
 neighbors come together, bringing what they can to enjoy a feast with one
@@ -8,9 +8,9 @@ each other's company.
 
 ![Kamayan Meal](/kamayan.jpg?raw=true)
 
-Welcome to the *Ruby Kamayan*, a [Ruby Koans](http://rubykoans.com/) inspired
-feast of knowledge, where every serving is another morsel of knowledge to
-improve your understanding of Ruby, programming, and related topics.
+Welcome to the *Kamayan*, a [Ruby Koans](http://rubykoans.com/) inspired feast
+of knowledge, where every serving is another morsel of knowledge to improve your
+understanding of Ruby (or Java, or JavaScript), programming, and related topics.
 
 Enjoy the feast!
 
