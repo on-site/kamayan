@@ -1,3 +1,5 @@
+"use strict";
+
 function IndexError(message) {
     this.name = "IndexError";
     this.message = message || "";

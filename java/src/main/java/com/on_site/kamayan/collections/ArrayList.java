@@ -41,7 +41,7 @@ public class ArrayList {
             "The delete(int) method should delete the value at the provided",
             "index and return it. The size should be 1 less than it was before",
             "this method was called. The index must be within the bounds of",
-            "the ArrayList, or an IndexError should be raised."
+            "the ArrayList, or an IndexError should be thrown."
         );
     }
 
@@ -52,7 +52,7 @@ public class ArrayList {
             "return the second argument.",
             "",
             "If the index is negative, an IndexOutOfBoundsException should be",
-            "raised.",
+            "thrown.",
             "",
             "If the index is bigger than the current size of the internal",
             "array, the internal array should be replaced with a bigger array",

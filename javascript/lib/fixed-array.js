@@ -1,3 +1,5 @@
+"use strict";
+
 var IndexError = require("./index-error");
 
 function FixedArray(size) {

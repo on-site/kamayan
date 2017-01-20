@@ -1,3 +1,5 @@
+"use strict";
+
 // In JavaScript, the Array class represents a collection of items. However, an
 // Array in JavaScript is not like the arrays in other languages. Typically, an
 // array in another language represents a fixed block of memory for storing
@@ -42,8 +44,8 @@ test("initial values are null", function() {
 
 test("getting and setting at an index must be within the bounds of the initial size", function() {
     var array = new FixedArray(5);
-    assert.throws(function() { array.get(-1); }, ___);
-    assert.throws(function() { array.get(5); }, ___);
-    assert.throws(function() { array.set(-1, 1); }, ___);
-    assert.throws(function() { array.set(5, 42); }, ___);
+    assert.throws(() => { array.get(-1); }, ___);
+    assert.throws(() => { array.get(5); }, ___);
+    assert.throws(() => { array.set(-1, 1); }, ___);
+    assert.throws(() => { array.set(5, 42); }, ___);
 });
