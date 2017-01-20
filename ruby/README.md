@@ -4,8 +4,8 @@
 
 Before you can start, you need to [install Ruby](https://www.ruby-lang.org/en/documentation/installation/).
 You might be able to use a package manager to install it easier (such as `brew`
-for MacOS or `apt-get` for Ubuntu). Next, install bundler via `gem install
-bundler`, and finally run `bundle` from within this same directory.
+for MacOS or `apt-get` for Ubuntu). Next, install bundler via `gem install bundler`,
+and finally run `bundle` from within this same directory.
 
 ## Running the Ruby Kamayan
 
