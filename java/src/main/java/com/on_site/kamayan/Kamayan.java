@@ -12,7 +12,7 @@ public class Kamayan {
 
     public static <T> T getField(Object object, Class<T> expectedReturnType, String fieldName) {
         try {
-            Field field = object.getClass().getField(fieldName);
+            Field field = getField(object.getClass(), fieldName);
             field.setAccessible(true);
             return expectedReturnType.cast(field.get(object));
         } catch (RuntimeException e) {
@@ -24,13 +24,35 @@ public class Kamayan {
 
     public static void setField(Object object, String fieldName, Object value) {
         try {
-            Field field = object.getClass().getField(fieldName);
+            Field field = getField(object.getClass(), fieldName);
             field.setAccessible(true);
             field.set(object, value);
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private static Field getField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
+        try {
+            return clazz.getField(fieldName);
+        } catch (NoSuchFieldException e) {
+            return getDeclaredField(clazz, fieldName);
+        }
+    }
+
+    private static Field getDeclaredField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
+        try {
+            return clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            clazz = clazz.getSuperclass();
+
+            if (clazz == null) {
+                throw e;
+            }
+
+            return getDeclaredField(clazz, fieldName);
         }
     }
 
