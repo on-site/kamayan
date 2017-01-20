@@ -14,7 +14,7 @@ ArrayList.prototype.size = function() {
 
 ArrayList.prototype.get = function(index) {
     this._checkBounds(index);
-    return this._array[index];
+    return this._array.get(index);
 };
 
 // Define a method "add" which takes a single argument. This method should

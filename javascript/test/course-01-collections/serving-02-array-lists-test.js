@@ -97,8 +97,8 @@ test.skip("add and prepend are chainable together", function() {
     list.add(42).add(43).prepend(2).prepend(1);
     assert.equal(1, list.get(0));
     assert.equal(2, list.get(1));
-    assert.equal(42, list[2]);
-    assert.equal(43, list[3]);
+    assert.equal(42, list.get(2));
+    assert.equal(43, list.get(3));
 });
 
 test.skip("chained add and prepend increases the size", function() {
@@ -123,8 +123,8 @@ test.skip("prepend can be called a lot", function() {
 
 test.skip("index get cannot go outside the bounds of the array", function() {
     var list = new ArrayList();
-    assert.throws(() => { list[-1]; }, IndexError);
-    assert.throws(() => { list[-42]; }, IndexError);
+    assert.throws(() => { list.get(-1); }, IndexError);
+    assert.throws(() => { list.get(-42); }, IndexError);
     assert.throws(() => { list.get(0); }, IndexError);
     assert.throws(() => { list.get(1); }, IndexError);
     list.add(1);
@@ -136,83 +136,83 @@ test.skip("index get can retrieve any element", function() {
     var list = new ArrayList().add(1).add(2).add(42).add(43);
     assert.equal(1, list.get(0));
     assert.equal(2, list.get(1));
-    assert.equal(42, list[2]);
-    assert.equal(43, list[3]);
+    assert.equal(42, list.get(2));
+    assert.equal(43, list.get(3));
 });
 
 test.skip("index set exists", function() {
-    assert.methodExists(ArrayList, "[]=", 2);
+    assert.methodExists(ArrayList, "set", 2);
 });
 
 test.skip("index set cannot use negative number", function() {
     var list = new ArrayList();
-    assert.throws(() => { list[-1] = 1; }, IndexError);
-    assert.throws(() => { list[-42] = 1; }, IndexError);
+    assert.throws(() => { list.set(-1, 1); }, IndexError);
+    assert.throws(() => { list.set(-42, 1); }, IndexError);
     assert.equal(0, list.size());
 });
 
 test.skip("index set can use existing indexes", function() {
     var list = new ArrayList().add(0).add(1).add(2).add(3);
-    list[0] = 1;
-    list[1] = 2;
-    list[2] = 3;
-    list[3] = 4;
+    list.set(0, 1);
+    list.set(1, 2);
+    list.set(2, 3);
+    list.set(3, 4);
     Kamayan.times(4, (i) => { assert.equal(i + 1, list.get(i)); });
 });
 
 test.skip("index set can add elements to the end of the list", function() {
     var list = new ArrayList();
-    list[0] = 1;
-    list[1] = 2;
-    list[2] = 3;
-    list[3] = 4;
+    list.set(0, 1);
+    list.set(1, 2);
+    list.set(2, 3);
+    list.set(3, 4);
     Kamayan.times(4, (i) => { assert.equal(i + 1, list.get(i)); });
 });
 
 test.skip("index set can use distant indexes", function() {
     var list = new ArrayList();
-    list[42] = 1;
-    list[142] = 2;
-    list[1042] = 3;
+    list.set(42, 1);
+    list.set(142, 2);
+    list.set(1042, 3);
     Kamayan.range(0, 41, (i) => { assert.isNull(list.get(i)); });
     Kamayan.range(43, 141, (i) => { assert.isNull(list.get(i)); });
     Kamayan.range(143, 1041, (i) => { assert.isNull(list.get(i)); });
-    assert.equal(1, list[42]);
-    assert.equal(2, list[142]);
-    assert.equal(3, list[1042]);
+    assert.equal(1, list.get(42));
+    assert.equal(2, list.get(142));
+    assert.equal(3, list.get(1042));
 });
 
 test.skip("index set with the next available index updates the size", function() {
     var list = new ArrayList();
-    list[0] = 1;
+    list.set(0, 1);
     assert.equal(1, list.size());
-    list[1] = 2;
+    list.set(1, 2);
     assert.equal(2, list.size());
-    list[2] = 3;
+    list.set(2, 3);
     assert.equal(3, list.size());
-    list[3] = 4;
+    list.set(3, 4);
     assert.equal(4, list.size());
 });
 
 test.skip("index set with existing indexes doesnt update the size", function() {
     var list = new ArrayList().add(0).add(1).add(2).add(3);
-    list[0] = 1;
+    list.set(0, 1);
     assert.equal(4, list.size());
-    list[1] = 2;
+    list.set(1, 2);
     assert.equal(4, list.size());
-    list[2] = 3;
+    list.set(2, 3);
     assert.equal(4, list.size());
-    list[3] = 4;
+    list.set(3, 4);
     assert.equal(4, list.size());
 });
 
 test.skip("index set with distant indexes updates the size", function() {
     var list = new ArrayList();
-    list[42] = 1;
+    list.set(42, 1);
     assert.equal(43, list.size());
-    list[142] = 2;
+    list.set(142, 2);
     assert.equal(143, list.size());
-    list[1042] = 3;
+    list.set(1042, 3);
     assert.equal(1043, list.size());
 });
 
