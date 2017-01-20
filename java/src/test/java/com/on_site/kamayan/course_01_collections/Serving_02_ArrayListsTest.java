@@ -107,7 +107,7 @@ public class Serving_02_ArrayListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelAndPrependAreChainableTogether() {
+    public void addAndPrependAreChainableTogether() {
         ArrayList list = new ArrayList();
         list.add(42).add(43).prepend(2).prepend(1);
         assertEquals(1, list.get(0));
@@ -118,7 +118,7 @@ public class Serving_02_ArrayListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void chainedShovelAndPrependIncreasesTheSize() {
+    public void chainedAddAndPrependIncreasesTheSize() {
         ArrayList list = new ArrayList();
         list.add(42).add(43).prepend(2).prepend(1);
         assertEquals(4, list.size());
@@ -126,7 +126,7 @@ public class Serving_02_ArrayListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelCanBeCalledALot() {
+    public void addCanBeCalledALot() {
         ArrayList list = new ArrayList();
         Kamayan.times(100, (i) -> list.add(42));
         assertEquals(100, list.size());
