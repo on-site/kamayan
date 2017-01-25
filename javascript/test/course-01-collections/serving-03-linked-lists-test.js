@@ -228,6 +228,25 @@ test.skip("set with distant indexes updates the size", function() {
     assert.equal(list.size(), 1043);
 });
 
+test.skip("set returns null if the previous value was null", function() {
+    var list = new LinkedList().add(null);
+    assert.isNull(list.set(0, 42));
+});
+
+test.skip("set returns null if the index is beyond the current size", function() {
+    var list = new LinkedList();
+    assert.isNull(list.set(0, 42));
+    assert.isNull(list.set(42, 43));
+});
+
+test.skip("set returns the previous value", function() {
+    var list = new LinkedList().add(1).add(2).add(3);
+    assert.equal(list.set(0, 42), 1);
+    assert.equal(list.set(0, 43), 42);
+    assert.equal(list.set(1, 44), 2);
+    assert.equal(list.set(2, 45), 3);
+});
+
 test.skip("delete exists", function() {
     assert.methodExists(LinkedList, "delete", 1);
 });
