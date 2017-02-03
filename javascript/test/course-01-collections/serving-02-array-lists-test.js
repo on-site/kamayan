@@ -59,7 +59,7 @@ test.skip("add adds to the end", function() {
     assert.equal(list.get(1), 43);
 });
 
-test.skip("add returns self so that it is chainable", function() {
+test.skip("add returns this so that it is chainable", function() {
     var list = new ArrayList();
     list.add(42).add(43);
     assert.equal(list.get(0), 42);
@@ -86,7 +86,7 @@ test.skip("prepend adds to the beginning", function() {
     assert.equal(list.get(1), 42);
 });
 
-test.skip("prepend returns self so that it is chainable", function() {
+test.skip("prepend returns this so that it is chainable", function() {
     var list = new ArrayList();
     list.prepend(42).prepend(43);
     assert.equal(list.get(0), 43);

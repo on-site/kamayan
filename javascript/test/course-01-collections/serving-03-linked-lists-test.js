@@ -51,7 +51,7 @@ test.skip("prepend increases the size", function() {
     assert.equal(list.size(), 2);
 });
 
-test.skip("prepend returns self so that it is chainable", function() {
+test.skip("prepend returns this so that it is chainable", function() {
     var list = new LinkedList();
     list.prepend(42).prepend(43);
     assert.equal(list._head.value, 43);
@@ -93,7 +93,7 @@ test.skip("add increases the size", function() {
     assert.equal(list.size(), 2);
 });
 
-test.skip("add returns self so that it is chainable", function() {
+test.skip("add returns this so that it is chainable", function() {
     var list = new LinkedList();
     list.add(42).add(43);
     assert.equal(list._head.value, 42);
