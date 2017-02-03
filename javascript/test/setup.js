@@ -9,7 +9,7 @@ function FillMeInError() {
 var assert = require("assert");
 
 assert.isNull = function(object) {
-    assert.equal(null, object);
+    assert.strictEqual(null, object);
 };
 
 assert.methodExists = function(type, method, arity) {
