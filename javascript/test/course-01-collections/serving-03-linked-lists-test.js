@@ -18,13 +18,13 @@
 //
 // Diagram of a linked list:
 //
-//   @size = 3
+//   list.size() == 3
 //
 //   @head
 //     |
 //     v
 //   +---+              +---+      +---+
-//   | a | -- child --> | b | ---> | c | ---> nil
+//   | a | -- child --> | b | ---> | c | ---> null
 //   +---+              +---+      +---+
 //
 suite("LinkedList");
