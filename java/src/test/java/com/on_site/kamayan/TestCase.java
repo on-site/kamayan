@@ -16,4 +16,8 @@ public class TestCase extends Assert {
             }
         }
     }
+
+    public static void assertEquals(int expected, Integer actual) {
+        assertEquals(expected, (Object) actual);
+    }
 }

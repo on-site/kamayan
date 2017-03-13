@@ -10,11 +10,19 @@ import java.util.function.Consumer;
 public class Kamayan {
     private Kamayan() {}
 
-    public static <T> T getField(Object object, Class<T> expectedReturnType, String fieldName) {
+    public static <T> T getField(Object object, Class<T> expectedReturnType, String firstFieldName, String... fieldNames) {
         try {
-            Field field = getField(object.getClass(), fieldName);
+            Field field = getField(object.getClass(), firstFieldName);
             field.setAccessible(true);
-            return expectedReturnType.cast(field.get(object));
+            object = field.get(object);
+
+            for (int i = 0; i < fieldNames.length; i++) {
+                field = getField(object.getClass(), fieldNames[i]);
+                field.setAccessible(true);
+                object = field.get(object);
+            }
+
+            return expectedReturnType.cast(object);
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
