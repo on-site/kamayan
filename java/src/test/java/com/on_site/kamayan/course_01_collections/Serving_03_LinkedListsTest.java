@@ -14,8 +14,9 @@ import org.junit.Test;
  * This serving is similar to the last, except instead of implementing an Array
  * class in terms of FixedArray, you will be implementing it in terms of a
  * series of links that form what is called a Linked List. You can find a stub
- * of the class in lib/linked-list.js, while the tests here will help ensure you
- * have implemented the core features.
+ * of the class in
+ * src/main/java/com/on_site/kamayan/collections/LinkedList.java, while the
+ * tests here will help ensure you have implemented the core features.
  *
  * You may only use the nested Node class for storing the contents of the
  * LinkedList. Do not be afraid to add new methods as you see fit, but keep any
@@ -44,6 +45,7 @@ public class Serving_03_LinkedListsTest extends TestCase {
     public void prependAddsToTheBeginning() {
         LinkedList list = new LinkedList();
         list.prepend(42);
+        assertNotNull(Kamayan.getField(list, Integer.class, "head"));
         assertEquals(42, Kamayan.getField(list, Integer.class, "head", "value"));
         list.prepend(43);
         assertEquals(43, Kamayan.getField(list, Integer.class, "head", "value"));
