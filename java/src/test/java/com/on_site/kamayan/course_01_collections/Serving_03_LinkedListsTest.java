@@ -147,7 +147,7 @@ public class Serving_03_LinkedListsTest extends TestCase {
         assertEquals(2, Kamayan.getField(list, Integer.class, "head", "child", "value"));
         assertEquals(42, Kamayan.getField(list, Integer.class, "head", "child", "child", "value"));
         assertEquals(43, Kamayan.getField(list, Integer.class, "head", "child", "child", "child", "value"));
-        assertNull(Kamayan.getField(list, Object.class, "head", "child", "child", "child"));
+        assertNull(Kamayan.getField(list, Object.class, "head", "child", "child", "child", "child"));
     }
 
     @Ignore("Remove this line to run this test")
