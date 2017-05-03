@@ -23,19 +23,19 @@ import org.junit.Test;
  *
  * Diagram of a doubly linked list:
  *
- *            @size = 3
+ *             @size = 3
  *
- *            @head                         @tail
- *              |                             |
- *              v                             v
- *            +---+ -- child --> +---+ ---> +---+ ---> nil
- *            | a |              | b |      | c |
- *   nil <--- +---+ <-- prev --- +---+ <--- +---+
+ *             @head                         @tail
+ *               |                             |
+ *               v                             v
+ *             +---+ -- child --> +---+ ---> +---+ ---> null
+ *             | a |              | b |      | c |
+ *   null <--- +---+ <-- prev --- +---+ <--- +---+
  */
 public class Serving_04_DoublyLinkedListsTest extends TestCase {
     @Ignore("Remove this line to run this test")
     @Test
-    public void reverseShovelAddsToTheBeginning() {
+    public void prependAddsToTheBeginning() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.prepend(42);
         assertEquals(42, Kamayan.getField(list, Integer.class, "head", "value"));
@@ -47,7 +47,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void reverseShovelUpdatesPreviousLinks() {
+    public void prependUpdatesPreviousLinks() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.prepend(42);
         list.prepend(43);
@@ -58,7 +58,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void reverseShovelIncreasesTheSize() {
+    public void prependIncreasesTheSize() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.prepend(42);
         assertEquals(1, list.size());
@@ -68,7 +68,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void reverseShovelReturnsSelfSoThatItIsChainable() {
+    public void prependReturnsThisSoThatItIsChainable() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.prepend(42).prepend(43);
         assertEquals(43, Kamayan.getField(list, Integer.class, "head", "value"));
@@ -78,7 +78,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void reverseShovelCanBeCalledALot() {
+    public void prependCanBeCalledALot() {
         DoublyLinkedList list = new DoublyLinkedList();
         Kamayan.times(100, (i) -> list.prepend(42));
         assertEquals(100, list.size());
@@ -92,7 +92,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelAddsToTheEnd() {
+    public void addAddsToTheEnd() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(42);
         assertEquals(42, Kamayan.getField(list, Integer.class, "head", "value"));
@@ -104,7 +104,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelUpdatesPreviousLinks() {
+    public void addUpdatesPreviousLinks() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(42);
         list.add(43);
@@ -115,7 +115,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelIncreasesTheSize() {
+    public void addIncreasesTheSize() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(42);
         assertEquals(1, list.size());
@@ -125,7 +125,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelReturnsSelfSoThatItIsChainable() {
+    public void addReturnsThisSoThatItIsChainable() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(42).add(43);
         assertEquals(42, Kamayan.getField(list, Integer.class, "head", "value"));
@@ -135,7 +135,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelCanBeCalledALot() {
+    public void addCanBeCalledALot() {
         DoublyLinkedList list = new DoublyLinkedList();
         Kamayan.times(100, (i) -> list.add(42));
         assertEquals(100, list.size());
@@ -149,7 +149,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void shovelAndReverseShovelAreChainableTogether() {
+    public void addAndPrependAreChainableTogether() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(42).add(43).prepend(2).prepend(1);
         assertEquals(1, Kamayan.getField(list, Integer.class, "head", "value"));
@@ -161,7 +161,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void chainedShovelAndReverseShovelIncreasesTheSize() {
+    public void chainedAddAndPrependIncreasesTheSize() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.add(42).add(43).prepend(2).prepend(1);
         assertEquals(4, list.size());
@@ -386,7 +386,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void eachReturnsSelfSoItCanBeChained() {
+    public void eachReturnsThisSoItCanBeChained() {
         DoublyLinkedList list = new DoublyLinkedList();
         assertEquals(list, list.each((element) -> { }));
 
@@ -411,7 +411,7 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void eachReversedReturnsSelfSoItCanBeChained() {
+    public void eachReversedReturnsThisSoItCanBeChained() {
         DoublyLinkedList list = new DoublyLinkedList();
         assertEquals(list, list.eachReversed((element) -> { }));
 
