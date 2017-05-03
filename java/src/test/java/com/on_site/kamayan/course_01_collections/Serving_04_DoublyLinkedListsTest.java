@@ -49,7 +49,9 @@ public class Serving_04_DoublyLinkedListsTest extends TestCase {
     @Test
     public void prependUpdatesPreviousLinks() {
         DoublyLinkedList list = new DoublyLinkedList();
+        assertNull(Kamayan.getField(list, Object.class, "tail"));
         list.prepend(42);
+        assertEquals(42, Kamayan.getField(list, Object.class, "tail", "value"));
         list.prepend(43);
         assertEquals(42, Kamayan.getField(list, Integer.class, "tail", "value"));
         assertEquals(43, Kamayan.getField(list, Integer.class, "tail", "previous", "value"));

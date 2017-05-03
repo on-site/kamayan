@@ -37,7 +37,9 @@ class Serving04DoublyLinkedLists < Attestify::Test
 
   def test_reverse_shovel_updates_previous_links
     linked_list = DoublyLinkedList.new
+    assert_nil linked_list.instance_variable_get(:@tail)
     linked_list >> 42
+    assert_equal 42, linked_list.instance_variable_get(:@tail).value
     linked_list >> 43
     assert_equal 42, linked_list.instance_variable_get(:@tail).value
     assert_equal 43, linked_list.instance_variable_get(:@tail).previous.value

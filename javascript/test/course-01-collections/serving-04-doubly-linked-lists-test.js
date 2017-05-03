@@ -38,7 +38,9 @@ test.skip("prepend adds to the beginning", function() {
 
 test.skip("prepend updates previous links", function() {
     var list = new DoublyLinkedList();
+    assert.isNull(list._tail);
     list.prepend(42);
+    assert.equal(list._tail.value, 42);
     list.prepend(43);
     assert.equal(list._tail.value, 42);
     assert.equal(list._tail.previous.value, 43);
