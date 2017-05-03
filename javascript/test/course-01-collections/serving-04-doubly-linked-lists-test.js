@@ -91,7 +91,9 @@ test.skip("add adds to the end", function() {
 
 test.skip("add updates previous links", function() {
     var list = new DoublyLinkedList();
+    assert.isNull(list._tail);
     list.add(42);
+    assert.equal(list._tail.value, 42);
     list.add(43);
     assert.equal(list._tail.value, 43);
     assert.equal(list._tail.previous.value, 42);
