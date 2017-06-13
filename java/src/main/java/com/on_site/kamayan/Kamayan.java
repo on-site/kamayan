@@ -3,9 +3,12 @@ package com.on_site.kamayan;
 import com.google.common.base.Joiner;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class Kamayan {
     private Kamayan() {}
@@ -61,6 +64,17 @@ public class Kamayan {
             }
 
             return getDeclaredField(clazz, fieldName);
+        }
+    }
+
+    public static <T> T send(Object object, Class<T> expectedReturnType, String methodName, Object... params) {
+        try {
+            Method method = object.getClass().getMethod(methodName, Arrays.stream(params).map(Object::getClass).collect(Collectors.toList()).toArray(new Class<?>[0]));
+            return expectedReturnType.cast(method.invoke(object, params));
+        } catch (RuntimeException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
