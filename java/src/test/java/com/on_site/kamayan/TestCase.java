@@ -11,13 +11,19 @@ public class TestCase extends Assert {
     public static final Class<FillMeInException> ___ = FillMeInException.class;
 
     public static <T extends Throwable> void assertThrows(Class<T> exceptionClass, Runnable fn) {
+        boolean thrown = true;
+
         try {
             fn.run();
-            fail("Expected exception of type " + exceptionClass.getName() + ", but nothing was thrown.");
+            thrown = false;
         } catch (Throwable t) {
             if (!exceptionClass.isInstance(t)) {
                 fail("Expected exception of type " + exceptionClass.getName() + ", but got type " + t.getClass().getName() + " instead.");
             }
+        }
+
+        if (!thrown) {
+            fail("Expected exception of type " + exceptionClass.getName() + ", but nothing was thrown.");
         }
     }
 

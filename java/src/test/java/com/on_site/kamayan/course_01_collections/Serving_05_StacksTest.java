@@ -3,6 +3,7 @@ package com.on_site.kamayan.course_01_collections;
 import com.on_site.kamayan.Kamayan;
 import com.on_site.kamayan.TestCase;
 import com.on_site.kamayan.collections.Stack;
+import com.on_site.kamayan.collections.StackOverflowException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,11 +115,11 @@ public class Serving_05_StacksTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void testPushBeyondMaxSizeThrowsStackOverflowError() throws Exception {
+    public void testPushBeyondMaxSizeThrowsStackOverflowException() throws Exception {
         Stack stack = new Stack(5);
         stack.push(42).push(43).push(1).push(2).push(3);
-        assertThrows(StackOverflowError.class, () -> stack.push(4));
-        assertThrows(StackOverflowError.class, () -> stack.push(5));
+        assertThrows(StackOverflowException.class, () -> stack.push(4));
+        assertThrows(StackOverflowException.class, () -> stack.push(5));
     }
 
     @Ignore("Remove this line to run this test")
@@ -126,8 +127,8 @@ public class Serving_05_StacksTest extends TestCase {
     public void testPushBeyondMaxSizeDoesntAddToSizeOrElements() throws Exception {
         Stack stack = new Stack(5);
         stack.push(42).push(43).push(1).push(2).push(3);
-        assertThrows(StackOverflowError.class, () -> stack.push(4));
-        assertThrows(StackOverflowError.class, () -> stack.push(5));
+        assertThrows(StackOverflowException.class, () -> stack.push(4));
+        assertThrows(StackOverflowException.class, () -> stack.push(5));
         assertEquals(5, stack.size());
         ArrayList<Object> actualElements = getActualElements(stack);
         assertEquals(Arrays.asList(42, 43, 1, 2, 3), actualElements);
