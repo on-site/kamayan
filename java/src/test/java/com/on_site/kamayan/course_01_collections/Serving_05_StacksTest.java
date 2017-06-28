@@ -121,10 +121,10 @@ public class Serving_05_StacksTest extends TestCase {
         assertThrows(StackOverflowException.class, () -> stack.push(4));
         assertThrows(StackOverflowException.class, () -> stack.push(5));
 
-        stack = new Stack(6);
-        stack.push(42).push(43).push(1).push(2).push(3).push(4);
-        assertThrows(StackOverflowException.class, () -> stack.push(44));
-        assertThrows(StackOverflowException.class, () -> stack.push(45));
+        Stack otherStack = new Stack(6);
+        otherStack.push(42).push(43).push(1).push(2).push(3).push(4);
+        assertThrows(StackOverflowException.class, () -> otherStack.push(44));
+        assertThrows(StackOverflowException.class, () -> otherStack.push(45));
     }
 
     @Ignore("Remove this line to run this test")
