@@ -93,6 +93,11 @@ class Serving05Stacks < Attestify::Test
     stack.push(42).push(43).push(1).push(2).push(3)
     assert_raises(StackOverflowError) { stack.push(4) }
     assert_raises(StackOverflowError) { stack.push(5) }
+
+    stack = Stack.new(6)
+    stack.push(42).push(43).push(1).push(2).push(3).push(4)
+    assert_raises(StackOverflowError) { stack.push(44) }
+    assert_raises(StackOverflowError) { stack.push(45) }
   end
 
   def test_push_beyond_max_size_doesnt_add_to_size_or_elements
