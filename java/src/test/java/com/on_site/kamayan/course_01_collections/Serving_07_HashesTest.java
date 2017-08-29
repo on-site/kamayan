@@ -145,25 +145,40 @@ public class Serving_07_HashesTest extends TestCase {
     @Ignore("Remove this line to run this test")
     @Test
     public void containsReturnsFalseForEmptyHash() throws Exception {
+        Hash hash = new Hash();
+        assertFalse(hash.contains("abc"));
     }
 
     @Ignore("Remove this line to run this test")
     @Test
     public void containsReturnsFalseForMissingKeys() throws Exception {
+        Hash hash = new Hash().put("abc", 42);
+        assertFalse(hash.contains("xyz"));
     }
 
     @Ignore("Remove this line to run this test")
     @Test
     public void containsReturnsTrueForExistingKeys() throws Exception {
+        Hash hash = new Hash().put("abc", 42).put("xyz", 123);
+        assertTrue(hash.contains("abc"));
+        assertTrue(hash.contains("xyz"));
     }
 
     @Ignore("Remove this line to run this test")
     @Test
     public void containsReturnsCorrectlyForDifferentKeysWithSameHashButNotEqual() throws Exception {
+        Key key1 = new Key("abc", 1);
+        Key key2 = new Key("xyz", 1);
+        Hash hash = new Hash().put(key1, 42);
+        assertTrue(hash.contains(key1));
+        assertFalse(hash.contains(key2));
     }
 
     @Ignore("Remove this line to run this test")
     @Test
     public void containsReturnsTrueForDifferentKeysWhenEqualsIsTrue() throws Exception {
+        Hash hash = new Hash().put(new Key("abc", 1), 42);
+        assertTrue(hash.contains(new Key("abc", 1)));
+        assertTrue(hash.contains(new Key("abc", 1)));
     }
 }
