@@ -2,10 +2,9 @@ package com.on_site.kamayan.course_01_collections;
 
 import com.on_site.kamayan.Kamayan;
 import com.on_site.kamayan.TestCase;
+import com.on_site.kamayan.collections.DoublyLinkedList;
 import com.on_site.kamayan.collections.Hash;
 import com.on_site.kamayan.collections.MissingKeyException;
-
-import java.util.LinkedList;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -135,9 +134,9 @@ public class Serving_07_HashesTest extends TestCase {
     @Test
     public void manyPutsCausesInternalArrayToBeResizedAndRehashedButEntriesStay() throws Exception {
         Hash hash = new Hash();
-        LinkedList[] internalHash = Kamayan.getField(hash, LinkedList[].class, "hash");
+        DoublyLinkedList[] internalHash = Kamayan.getField(hash, DoublyLinkedList[].class, "hash");
         Kamayan.times(1000, (i) -> hash.put("key" + i, i));
-        LinkedList[] newInternalHash = Kamayan.getField(hash, LinkedList[].class, "hash");
+        DoublyLinkedList[] newInternalHash = Kamayan.getField(hash, DoublyLinkedList[].class, "hash");
         assertTrue(newInternalHash.length > internalHash.length);
         Kamayan.times(1000, (i) -> assertEquals(i, hash.get("key" + i)));
     }

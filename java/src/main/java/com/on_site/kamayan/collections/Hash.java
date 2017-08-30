@@ -2,10 +2,8 @@ package com.on_site.kamayan.collections;
 
 import com.on_site.kamayan.Kamayan;
 
-import java.util.LinkedList;
-
 public class Hash {
-    private LinkedList[] hash;
+    private DoublyLinkedList[] hash;
     private int size;
 
     private static class Entry {
@@ -27,7 +25,7 @@ public class Hash {
     }
 
     public Hash() {
-        this.hash = new LinkedList[10];
+        this.hash = new DoublyLinkedList[10];
         this.size = 0;
     }
 
