@@ -59,33 +59,12 @@ public class Serving_07_HashesTest extends TestCase {
 
     @Ignore("Remove this line to run this test")
     @Test
-    public void putWithSameKeyDoesntIncreaseSize() throws Exception {
-        Hash hash = new Hash();
-        String key = "abc";
-        hash.put(key, 42);
-        assertEquals(1, hash.size());
-        hash.put(key, 123);
-        assertEquals(1, hash.size());
-    }
-
-    @Ignore("Remove this line to run this test")
-    @Test
     public void putWithDifferentKeyButSameHashCodeIncreasesSize() throws Exception {
         Hash hash = new Hash();
         hash.put(new Key("abc", 1), 42);
         assertEquals(1, hash.size());
         hash.put(new Key("xyz", 1), 123);
         assertEquals(2, hash.size());
-    }
-
-    @Ignore("Remove this line to run this test")
-    @Test
-    public void putWithDifferentKeyButEqualsIsTrueDoesntIncreaseSize() throws Exception {
-        Hash hash = new Hash();
-        hash.put(new Key("abc", 1), 42);
-        assertEquals(1, hash.size());
-        hash.put(new Key("abc", 1), 123);
-        assertEquals(1, hash.size());
     }
 
     @Ignore("Remove this line to run this test")
@@ -110,6 +89,27 @@ public class Serving_07_HashesTest extends TestCase {
         assertEquals(42, hash.get("abc"));
         hash.put("abc", 123);
         assertEquals(123, hash.get("abc"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void putWithSameKeyDoesntIncreaseSize() throws Exception {
+        Hash hash = new Hash();
+        String key = "abc";
+        hash.put(key, 42);
+        assertEquals(1, hash.size());
+        hash.put(key, 123);
+        assertEquals(1, hash.size());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void putWithDifferentKeyButEqualsIsTrueDoesntIncreaseSize() throws Exception {
+        Hash hash = new Hash();
+        hash.put(new Key("abc", 1), 42);
+        assertEquals(1, hash.size());
+        hash.put(new Key("abc", 1), 123);
+        assertEquals(1, hash.size());
     }
 
     @Ignore("Remove this line to run this test")
