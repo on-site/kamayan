@@ -8,13 +8,54 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class Serving_08_TreeSetTest extends TestCase {
-    // Add returns itself
-    // Add increases the size
-    // Add doesn't increase the size if the value is already there
-    // Add doesn't insert a duplicate node
-    // Add the first element goes to the root
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addReturnsSelf() {
+        TreeSet<Integer> set = new TreeSet<>();
+        assertEquals(set, set.add(42));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addIncreasesTheSize() {
+        TreeSet<Integer> set = new TreeSet<>();
+        assertEquals(0, set.size());
+        set.add(42);
+        assertEquals(1, set.size());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addDoesntIncreaseTheSizeIfTheValueIsAlreadyThere() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        assertEquals(1, set.size());
+        set.add(42);
+        assertEquals(1, set.size());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addTheFirstElementGoesToTheRoot() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        assertEquals(42, Kamayan.getField(set, Integer.class, "root", "value"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addDoesntInsertADuplicateNode() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(42);
+        assertNull(Kamayan.getField(set, Object.class, "root", "left"));
+        assertNull(Kamayan.getField(set, Object.class, "root", "right"));
+    }
+
     // Add a smaller object adds to the left
     // Add a larger object adds to the right
+    // Add doesn't insert a duplicate node that is to the left of the root
+    // Add doesn't insert a duplicate node that is to the right of the root
 
     // Contains with an empty tree returns false
     // Contains where the root equals the value
