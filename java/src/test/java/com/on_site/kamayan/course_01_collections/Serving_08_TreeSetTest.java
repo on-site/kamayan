@@ -52,16 +52,96 @@ public class Serving_08_TreeSetTest extends TestCase {
         assertNull(Kamayan.getField(set, Object.class, "root", "right"));
     }
 
-    // Add a smaller object adds to the left
-    // Add a larger object adds to the right
-    // Add doesn't insert a duplicate node that is to the left of the root
-    // Add doesn't insert a duplicate node that is to the right of the root
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addASmallerObjectAddsToTheLeft() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(13);
+        assertEquals(13, Kamayan.getField(set, Integer.class, "root", "left", "value"));
+    }
 
-    // Contains with an empty tree returns false
-    // Contains where the root equals the value
-    // Contains where the value is not in the tree
-    // Contains where the value is on the left branch
-    // Contains where the value is on the right branch
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addALargerObjectAddsToTheRight() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(84);
+        assertEquals(84, Kamayan.getField(set, Integer.class, "root", "right", "value"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addDoesntInsertADuplicateNodeThatIsToTheLeftOfTheRoot() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(13);
+        set.add(13);
+        assertNull(Kamayan.getField(set, Object.class, "root", "left", "left"));
+        assertNull(Kamayan.getField(set, Object.class, "root", "left", "right"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void addDoesntInsertADuplicateNodeThatIsToTheRightOfTheRoot() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(84);
+        set.add(84);
+        assertNull(Kamayan.getField(set, Object.class, "root", "right", "left"));
+        assertNull(Kamayan.getField(set, Object.class, "root", "right", "right"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void containsWithAnEmptyTreeReturnsFalse() {
+        TreeSet<Integer> set = new TreeSet<>();
+        assertFalse(set.contains(42));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void containsReturnsTrueWhereTheRootEqualsTheValue() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        assertTrue(set.contains(42));
+        set.add(13);
+        assertTrue(set.contains(42));
+        set.add(84);
+        assertTrue(set.contains(42));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void containsReturnsFalseWhereTheValueIsNotInTheTree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        assertFalse(set.contains(7));
+        set.add(13);
+        assertFalse(set.contains(7));
+        set.add(84);
+        assertFalse(set.contains(7));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void containsWhereTheValueIsOnTheLeftBranch() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(13);
+        set.add(84);
+        assertTrue(set.contains(13));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void containsWhereTheValueIsOnTheRightBranch() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        set.add(13);
+        set.add(84);
+        assertTrue(set.contains(84));
+    }
 
     // Remove returns itself
     // Remove does nothing when the tree is empty
