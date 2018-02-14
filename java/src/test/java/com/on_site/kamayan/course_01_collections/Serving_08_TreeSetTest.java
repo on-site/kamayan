@@ -143,15 +143,76 @@ public class Serving_08_TreeSetTest extends TestCase {
         assertTrue(set.contains(84));
     }
 
-    // Remove returns itself
-    // Remove does nothing when the tree is empty
-    // Remove decreases the size if the value is there
-    // Remove doesn't decrease the size if the value is not there
-    // Remove with one element removes the root
-    // Remove for the left element removes that node
-    // Remove for the right element removes that node
-    // Remove the root when there exists left and right nodes doesn't remove those nodes
-    // Remove a child that has children only removes the desired node
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeDoesNothingWhenTheTreeIsEmpty() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.remove(42);
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeReturnsItself() {
+        TreeSet<Integer> set = new TreeSet<>();
+        assertEquals(set, set.remove(42));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeDecreasesTheSizeIfTheValueIsThere() {
+        TreeSet<Integer> set = new TreeSet<>().add(42);
+        assertEquals(1, set.size());
+        set.remove(42);
+        assertEquals(0, set.size());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeDoesntDecreaseTheSizeIfTheValueIsNotThere() {
+        TreeSet<Integer> set = new TreeSet<>().add(42);
+        assertEquals(1, set.size());
+        set.remove(4);
+        assertEquals(1, set.size());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeWithOneElementRemovesTheRoot() {
+        TreeSet<Integer> set = new TreeSet<>().add(42);
+        assertNotNull(Kamayan.getField(set, Object.class, "root"));
+        set.remove(42);
+        assertNull(Kamayan.getField(set, Object.class, "root"));
+    }
+
+    // remove the root when there is only a left subtree
+    // remove the root when there is only a right subtree
+    // remove the root when there is a left and right subtree
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheLeftNodeWhenThereIsNoSubtree() {
+        TreeSet<Integer> set = new TreeSet<>().add(42).add(13);
+        assertNotNull(Kamayan.getField(set, Object.class, "root", "left"));
+        set.remove(13);
+        assertNull(Kamayan.getField(set, Object.class, "root", "left"));
+    }
+
+    // remove the left node when there is only a left subtree
+    // remove the left node when there is only a right subtree
+    // remove the left node when there is a left and right subtree
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRightNodeWhenThereIsNoSubtree() {
+        TreeSet<Integer> set = new TreeSet<>().add(42).add(84);
+        assertNotNull(Kamayan.getField(set, Object.class, "root", "right"));
+        set.remove(84);
+        assertNull(Kamayan.getField(set, Object.class, "root", "right"));
+    }
+
+    // remove the right node when there is only a left subtree
+    // remove the right node when there is only a right subtree
+    // remove the right node when there is a left and right subtree
 
     // Each returns itself
     // Each does nothing when the tree is empty
