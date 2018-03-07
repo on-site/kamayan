@@ -160,7 +160,8 @@ public class Serving_08_TreeSetTest extends TestCase {
     @Ignore("Remove this line to run this test")
     @Test
     public void removeDecreasesTheSizeIfTheValueIsThere() {
-        TreeSet<Integer> set = new TreeSet<>().add(42);
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
         assertEquals(1, set.size());
         set.remove(42);
         assertEquals(0, set.size());
@@ -169,7 +170,8 @@ public class Serving_08_TreeSetTest extends TestCase {
     @Ignore("Remove this line to run this test")
     @Test
     public void removeDoesntDecreaseTheSizeIfTheValueIsNotThere() {
-        TreeSet<Integer> set = new TreeSet<>().add(42);
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
         assertEquals(1, set.size());
         set.remove(4);
         assertEquals(1, set.size());
@@ -178,41 +180,146 @@ public class Serving_08_TreeSetTest extends TestCase {
     @Ignore("Remove this line to run this test")
     @Test
     public void removeWithOneElementRemovesTheRoot() {
-        TreeSet<Integer> set = new TreeSet<>().add(42);
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
         assertNotNull(Kamayan.getField(set, Object.class, "root"));
         set.remove(42);
         assertNull(Kamayan.getField(set, Object.class, "root"));
     }
 
-    // remove the root when there is only a left subtree
-    // remove the root when there is only a right subtree
-    // remove the root when there is a left and right subtree
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRootWhenThereIsOnlyALeftSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42).add(13).add(2).add(15);
+        Object subtree = Kamayan.getField(set, Object.class, "root", "left");
+        assertEquals(13, Kamayan.getField(subtree, Integer.class, "value"));
+        set.remove(42);
+        assertEquals(subtree, Kamayan.getField(set, Object.class, "root"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRootWhenThereIsOnlyARightSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(-10).add(13).add(2).add(15);
+        Object subtree = Kamayan.getField(set, Object.class, "root", "right");
+        assertEquals(13, Kamayan.getField(subtree, Integer.class, "value"));
+        set.remove(-10);
+        assertEquals(subtree, Kamayan.getField(set, Object.class, "root"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRootWhenThereIsALeftAndRightSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42).add(13).add(2).add(15).add(84).add(68).add(100);
+        Object leftSubtree = Kamayan.getField(set, Object.class, "root", "left");
+        Object rightSubtree = Kamayan.getField(set, Object.class, "root", "right");
+        Object graftingPoint = Kamayan.getField(leftSubtree, Object.class, "right");
+        assertEquals(13, Kamayan.getField(leftSubtree, Integer.class, "value"));
+        assertEquals(84, Kamayan.getField(rightSubtree, Integer.class, "value"));
+        assertEquals(15, Kamayan.getField(graftingPoint, Integer.class, "value"));
+        set.remove(42);
+        assertEquals(leftSubtree, Kamayan.getField(set, Object.class, "root"));
+        assertEquals(rightSubtree, Kamayan.getField(graftingPoint, Object.class, "right"));
+    }
 
     @Ignore("Remove this line to run this test")
     @Test
     public void removeTheLeftNodeWhenThereIsNoSubtree() {
-        TreeSet<Integer> set = new TreeSet<>().add(42).add(13);
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42).add(13);
         assertNotNull(Kamayan.getField(set, Object.class, "root", "left"));
         set.remove(13);
         assertNull(Kamayan.getField(set, Object.class, "root", "left"));
     }
 
-    // remove the left node when there is only a left subtree
-    // remove the left node when there is only a right subtree
-    // remove the left node when there is a left and right subtree
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheLeftNodeWhenThereIsOnlyALeftSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(150).add(42).add(13).add(2).add(15);
+        Object subtree = Kamayan.getField(set, Object.class, "root", "left", "left");
+        assertEquals(13, Kamayan.getField(subtree, Integer.class, "value"));
+        set.remove(42);
+        assertEquals(subtree, Kamayan.getField(set, Object.class, "root", "left"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheLeftNodeWhenThereIsOnlyARightSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(150).add(-10).add(13).add(2).add(15);
+        Object subtree = Kamayan.getField(set, Object.class, "root", "left", "right");
+        assertEquals(13, Kamayan.getField(subtree, Integer.class, "value"));
+        set.remove(-10);
+        assertEquals(subtree, Kamayan.getField(set, Object.class, "root", "left"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheLeftNodeWhenThereIsALeftAndRightSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(150).add(42).add(13).add(2).add(15).add(84).add(68).add(100);
+        Object leftSubtree = Kamayan.getField(set, Object.class, "root", "left", "left");
+        Object rightSubtree = Kamayan.getField(set, Object.class, "root", "left", "right");
+        Object graftingPoint = Kamayan.getField(leftSubtree, Object.class, "right");
+        assertEquals(13, Kamayan.getField(leftSubtree, Integer.class, "value"));
+        assertEquals(84, Kamayan.getField(rightSubtree, Integer.class, "value"));
+        assertEquals(15, Kamayan.getField(graftingPoint, Integer.class, "value"));
+        set.remove(42);
+        assertEquals(leftSubtree, Kamayan.getField(set, Object.class, "root", "left"));
+        assertEquals(rightSubtree, Kamayan.getField(graftingPoint, Object.class, "right"));
+    }
 
     @Ignore("Remove this line to run this test")
     @Test
     public void removeTheRightNodeWhenThereIsNoSubtree() {
-        TreeSet<Integer> set = new TreeSet<>().add(42).add(84);
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42).add(84);
         assertNotNull(Kamayan.getField(set, Object.class, "root", "right"));
         set.remove(84);
         assertNull(Kamayan.getField(set, Object.class, "root", "right"));
     }
 
-    // remove the right node when there is only a left subtree
-    // remove the right node when there is only a right subtree
-    // remove the right node when there is a left and right subtree
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRightNodeWhenThereIsOnlyALeftSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(-20).add(42).add(13).add(2).add(15);
+        Object subtree = Kamayan.getField(set, Object.class, "root", "right", "left");
+        assertEquals(13, Kamayan.getField(subtree, Integer.class, "value"));
+        set.remove(42);
+        assertEquals(subtree, Kamayan.getField(set, Object.class, "root", "right"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRightNodeWhenThereIsOnlyARightSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(-20).add(-10).add(13).add(2).add(15);
+        Object subtree = Kamayan.getField(set, Object.class, "root", "right", "right");
+        assertEquals(13, Kamayan.getField(subtree, Integer.class, "value"));
+        set.remove(-10);
+        assertEquals(subtree, Kamayan.getField(set, Object.class, "root", "right"));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void removeTheRightNodeWhenThereIsALeftAndRightSubtree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(-20).add(42).add(13).add(2).add(15).add(84).add(68).add(100);
+        Object leftSubtree = Kamayan.getField(set, Object.class, "root", "right", "left");
+        Object rightSubtree = Kamayan.getField(set, Object.class, "root", "right", "right");
+        Object graftingPoint = Kamayan.getField(leftSubtree, Object.class, "right");
+        assertEquals(13, Kamayan.getField(leftSubtree, Integer.class, "value"));
+        assertEquals(84, Kamayan.getField(rightSubtree, Integer.class, "value"));
+        assertEquals(15, Kamayan.getField(graftingPoint, Integer.class, "value"));
+        set.remove(42);
+        assertEquals(leftSubtree, Kamayan.getField(set, Object.class, "root", "right"));
+        assertEquals(rightSubtree, Kamayan.getField(graftingPoint, Object.class, "right"));
+    }
 
     // Each returns itself
     // Each does nothing when the tree is empty
