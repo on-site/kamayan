@@ -1,6 +1,7 @@
 package com.on_site.kamayan.course_01_collections;
 
 import com.on_site.kamayan.Kamayan;
+import com.on_site.kamayan.Ref;
 import com.on_site.kamayan.TestCase;
 import com.on_site.kamayan.collections.TreeSet;
 
@@ -321,9 +322,66 @@ public class Serving_08_TreeSetTest extends TestCase {
         assertEquals(rightSubtree, Kamayan.getField(graftingPoint, Object.class, "right"));
     }
 
-    // Each returns itself
-    // Each does nothing when the tree is empty
-    // Each yields the root when there is just one node
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachReturnsSelf() {
+        TreeSet<Integer> set = new TreeSet<>();
+        assertEquals(set, set.each((x) -> {}));
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachDoesNothingWhenTheTreeIsEmpty() {
+        TreeSet<Integer> set = new TreeSet<>();
+        Ref<Integer> count = new Ref<>(0);
+        set.each((x) -> {
+            count.set(count.get() + 1);
+        });
+        assertEquals(0, count.get());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachYieldsTheRootWhenThereIsJustOneNode() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42);
+        Ref<Integer> count = new Ref<>(0);
+        Ref<Integer> value = new Ref<>();
+        set.each((x) -> {
+            count.set(count.get() + 1);
+            value.set(x);
+        });
+        assertEquals(1, count.get());
+        assertEquals(42, value.get());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachDoesNothingWhenTheTreeIsEmptyWhenItWasntOriginally() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(42).add(42).add(12).remove(12).remove(42);
+        Ref<Integer> count = new Ref<>(0);
+        set.each((x) -> {
+            count.set(count.get() + 1);
+        });
+        assertEquals(0, count.get());
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachYieldsTheRootWhenThereIsJustOneNodeWhenItWasntOriginally() {
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(12).add(42).add(42).add(24).remove(12).remove(24);
+        Ref<Integer> count = new Ref<>(0);
+        Ref<Integer> value = new Ref<>();
+        set.each((x) -> {
+            count.set(count.get() + 1);
+            value.set(x);
+        });
+        assertEquals(1, count.get());
+        assertEquals(42, value.get());
+    }
+
     // Each yields all the elements when there are several nodes
     // Each yields from smallest to largest in a balanced tree
 }
