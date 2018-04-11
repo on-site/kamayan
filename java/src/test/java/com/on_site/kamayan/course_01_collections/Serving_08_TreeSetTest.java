@@ -5,6 +5,8 @@ import com.on_site.kamayan.Ref;
 import com.on_site.kamayan.TestCase;
 import com.on_site.kamayan.collections.TreeSet;
 
+import java.util.HashMap;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -382,6 +384,42 @@ public class Serving_08_TreeSetTest extends TestCase {
         assertEquals(42, value.get());
     }
 
-    // Each yields all the elements when there are several nodes
-    // Each yields from smallest to largest in a balanced tree
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachYieldsAllTheElementsWhenThereAreSeveralNodes() {
+        TreeSet<Integer> set = new TreeSet<>();
+        Integer[] values = new Integer[] { 42, 13, 7, 1, 8, 18, 16, 22, 66, 53, 84, 50, 54, 100, 74 };
+        HashMap<Integer, Integer> counts = new HashMap<>();
+
+        for (Integer value : values) {
+            set.add(value);
+            counts.put(value, 0);
+        }
+
+        set.each((x) -> {
+            assertNotNull("Each yielded a value not expected in the tree: " + x, counts.get(x));
+            counts.put(x, counts.get(x) + 1);
+        });
+
+        for (Integer value : values) {
+            assertEquals(1, counts.get(value));
+        }
+    }
+
+    @Ignore("Remove this line to run this test")
+    @Test
+    public void eachYieldsFromSmallestToLargestInABalancedTree() {
+        TreeSet<Integer> set = new TreeSet<>();
+        Integer[] values = new Integer[] { 42, 13, 7, 1, 8, 18, 16, 22, 66, 53, 84, 50, 54, 100, 74 };
+        Ref<Integer> previous = new Ref<>(Integer.MIN_VALUE);
+
+        for (Integer value : values) {
+            set.add(value);
+        }
+
+        set.each((x) -> {
+            assertTrue("Expected previous [" + previous.get() + "] to be less than x [" + x + "]", previous.get() < x);
+            previous.set(x);
+        });
+    }
 }
