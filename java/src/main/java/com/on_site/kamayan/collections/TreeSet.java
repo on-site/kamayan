@@ -4,7 +4,7 @@ import com.on_site.kamayan.Kamayan;
 
 import java.util.function.Consumer;
 
-public class TreeSet<T extends Comparable<?>> {
+public class TreeSet<T extends Comparable<T>> {
     private int size = 0;
     private Node root;
 
